@@ -34,8 +34,7 @@ function iptablesrules(){
 	echo ""
 }
 
-read -p "Have you remove previous iptables rules? (y or n) 
-" removerule
+read -p "Have you remove previous iptables rules? (y or n) " removerule
 
 if [ ${removerule} == "y" ]; then
 	echo "Flushing Iptables rules"
@@ -52,12 +51,12 @@ condition_to_check="False"
 while [[ ${condition_to_check} == "False" ]]; do
     read -p "Continue processing? (y or n) " query
     if [ ${query} == "n" ]; then
-		condition_to_check="True"
+	condition_to_check="True"
     elif [ ${query} == "y" ]; then
-		iptablesrules
-	else
-		echo "Please enter y or n"
-	fi
+	iptablesrules
+    else
+	echo "Please enter y or n"
+    fi
 done
 chkconfig iptables on
 service iptables save
